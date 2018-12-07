@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/yidong/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/yidong/css/jquery.dialog.css" />
+<link rel="stylesheet" href="/yidong/css/index.css" />
+<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/stylesheets/styleZhang.css">
+<style>
+	.subnav li{ width:110px}
+</style>
+<title>木兰县疫苗接种管理系统</title>
+</head>
+
+<body>
+<div id="container">
+	<div id="hd">
+    	<div class="hd-wrap ue-clear">
+        	<div class="top-light"></div>
+            <h1 class="logo"></h1>
+            <div class="login-info ue-clear">
+                <span style="color:white;  font-size:15px; font-family:李旭科毛笔行书";>欢迎您，</span><span style="font-style: bold;  color:white; font-family:黑体";"><%=user.nicheng%></span>
+								<span style=" margin-left:780px; color:white;  font-size:15px; font-family:李旭科毛笔行书"; >今天是:</span><span style="font-style: bold;  color:white; font-family:黑体";" id="d"></span>&nbsp;&nbsp;
+            </div>
+            <div class="toolbar ue-clear">
+                <a href="javascript:;" class="home-btn">首页</a>
+                <a href="/login/exit" class="quit-btn exit"></a>
+            </div>
+        </div>
+    </div>
+    <div id="bd">
+    	<div class="wrap ue-clear">
+        	<div class="sidebar">
+            	<h2 class="sidebar-header"><p>疫苗接种导航</p></h2>
+                <ul class="nav">
+					<li class="gongwen"><div class="nav-header"><a href="javascript:;" date-src="/emp/mainmain"  class="ue-clear"><span>首页</span></a></div></li>                	
+					<li class="konwledge">
+						<div class="nav-header"><a href="javascript:;" class="ue-clear" ><span>疫苗管理</span><i class="icon"></i></a></div>
+						<ul class="subnav">
+									<li><a class='lia BgCor' href="javascript:;" date-src="/yimiao">疫苗信息管理</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/yimiao/shoukong">售空疫苗记录</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/yimiao/skquery">售空疫苗信息</a></li>
+									<!--<li><a class='lia' href="javascript:;" ></a></li>-->
+							</ul>
+					</li>
+					<li class="office ">
+                		<div class="nav-header"><a href="javascript:;"class="ue-clear" ><span>疫苗接种管理</span><i class="icon"></i></a></div>
+                		<ul class="subnav">
+                            <li><a class='lia' href="javascript:;" date-src="/emp">接种者信息管理</a></li>
+                            <li><a class='lia' href="javascript:;" date-src="/emp/dengji">接种者登记</a></li>
+                            <li><a class='lia' href="javascript:;" date-src="/dept/x">接种者接种信息</a></li>
+                        </ul>
+                	</li>
+					<li class="email">
+						<div class="nav-header"><a href="javascript:;" class="ue-clear" ><span>采购管理</span><i class="icon"></i></a></div>
+						<ul class="subnav">
+									<li><a class='lia' href="javascript:;" date-src="/stu">采购单</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/stu/gyshang">供应商管理</a></li>
+							</ul>
+					</li>
+					<li class="system">
+							<div class="nav-header"><a href="javascript:;" class="ue-clear" ><span>仓储管理</span><i class="icon"></i></a></div>
+							<ul class="subnav">
+									<li><a class='lia' href="javascript:;" date-src="/stu/cku">仓库管理</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/emp/lenglian">冷链运输记录</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/stu/pan">疫苗盘存管理</a></li>
+									<!--<li><a class='lia' href="javascript:;" date-src="/stu/pan">疫苗出库管理</a></li>-->
+							</ul>
+					</li>
+					<li class="nav-info">
+							<div class="nav-header"><a href="javascript:;"  class="ue-clear"><span>财务统计管理</span><i class="icon"></i></a></div>
+							<ul class="subnav">
+									<li><a class='lia' href="javascript:;" date-src="/fs">统计数据管理</a></li>
+									<li><a class='lia' href="javascript:;" date-src="/dept">防疫站部门管理</a></li>
+							</ul>
+					</li>
+					<li class="system2">
+						<div class="nav-header"><a href="javascript:;" date-src="/main/user"  class="ue-clear"><span>系统权限管理</span></a></div>
+					</li>
+					<li class="system3">
+						<div class="nav-header"><a href="javascript:;" date-src="/ygong"  class="ue-clear"><span>员工信息管理</span></a></div>
+					</li>
+					<li class="nav-info zysx">
+							<div class="nav-header"><a href="javascript:;"  class="ue-clear" date-src="/yimiao/zysx"><span>疫苗注意事项记录</span></a></div>
+					</li>
+                </ul>
+            </div>
+            <div class="content">
+            	<iframe src="/emp/mainmain" id="iframe" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <div id="ft" class="ue-clear">
+    	<div class="ft-left">
+            <span>木兰县疫苗接种管理系统</span>
+            <em></em>
+        </div>
+        <div class="ft-right">
+            <span>1150131308</span>
+            <em>张祖英</em>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/yidong/js/jquery.js"></script>
+<script type="text/javascript" src="/yidong/js/common.js"></script>
+<script type="text/javascript" src="/yidong/js/core.js"></script>
+<script type="text/javascript" src="/yidong/js/jquery.dialog.js"></script>
+<script type="text/javascript" src="/yidong/js/index.js"></script>
+</html>
+<script>
+$(document).ready(function(){
+           
+    $("#d").html(new Date().toLocaleString());
+	   setInterval(function(){
+		$("#d").html(new Date().toLocaleString());
+ 
+	   },1000);
+		$('.lia').each(function(){
+			$(this).on('click',function(){
+				console.log(1)
+				$('.lia').removeClass('BgCor');
+				$(this).addClass('BgCor');
+			})
+		})
+ });
+
+
+</script>

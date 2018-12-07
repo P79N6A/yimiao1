@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <style type="text/css">
+    	th{
+    		color: #fff!important;
+    	}
+    </style>
+  </head>
+  <body>
+	  <div class="panel panel-primary" style="margin:20px; border:1px solid #2882CE ">
+			<div class="panel-heading" style="height:60px;">
+	      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站售空疫苗登记</h3>
+	    </div>
+			<div class="panel-body">
+			    <form method="post" action="/yimiao/skupdates" id="form1">
+			    	<input type="hidden" name="skid" > 
+						<div class="panel panel-default">
+							<div class="panel-body" >
+								<div class="row">
+									  <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable">已售空疫苗:</label>
+										  <div class="skInput">
+										    <input type="text" class="form-control skput" name="skname" id="skname">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt">状态:</label>
+										  <div class="skInput">
+										    <input type="text" class="form-control skput" name="skzt" id="skzt">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">录入时间:</label>
+										  <div class="skInput">
+										    <input type="text" class="form-control skput" name="skdate" id="skdate">
+										  </div>
+									 </div>
+									 <div id=""><button  class="fkBtn" onclick="_tj()">提交已售空疫苗</button></div>
+							 	</div>
+							</div>
+						</div>
+			   </form>   
+			</div>
+	  </div>
+  </body>
+</html>
+
+<script>
+    	function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+//	function yin(){
+//		$("#form1").submit();
+//	}
+	
+    
+//  function _del(){
+//       
+//       if($("[name=ids]:checked").length==0){
+//         alert("至少选中一个");     
+//	 }
+//	 else{
+//           if(confirm("确定删除吗?")){
+//		    // 提交表单
+//		   $("#form1").submit();
+//	     } 
+//	 }
+//  }
+
+
+    $(document).ready(function(){
+				var emps=JSON.parse('<%-JSON.stringify(emps)%>');
+		    $("[name=skid]").val(emps[0].skid);
+			  $("[name=skname]").val(emps[0].skname);
+			  $("[name=skzt]").val(emps[0].skzt);
+			  $("[name=skdate]").val(emps[0].skdate);
+          //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({ 
+           
+            message: '该内容不合法', 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            fields: { 
+                         skname: { 
+                               validators: { 
+                                    notEmpty: { 
+                                          message: '不能为空' 
+                                    } 
+                               } 
+                         },  
+                } 
+          }); 
+	  
+
+    }); 
+</script>
+

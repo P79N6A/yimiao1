@@ -1,0 +1,87 @@
+select * from emp
+create table dengji( 
+
+did varchar(50) primary key, 
+dname varchar(50), 
+dsex varchar(50),
+dage varchar(50),
+dbirth varchar(50),
+droom varchar(50),
+ddoctor varchar(50),
+dgms varchar(50),
+dtel varchar(50),
+dylk varchar(50),
+dylkNum varchar(50),
+dnext varchar(50),
+dymiao varchar(50),
+dlrtime varchar(50),
+dpeo varchar(50),
+dbiaoji varchar(50),
+dtimes varchar(50),
+fkdocid varchar(50)
+)charset='utf8'
+
+create table doctor( 
+
+docid varchar(50) primary key, 
+docname varchar(50), 
+docsex varchar(50),
+docage varchar(50),
+dochy varchar(50),
+docmin varchar(50),
+docxue varchar(50),
+docyuan varchar(50),
+doctel varchar(50),
+docemail varchar(50),
+doczhiye varchar(50),
+doczige varchar(50),
+docks varchar(50),
+docjibie varchar(50),
+docnianxian varchar(50),
+docjia varchar(50)	
+)charset='utf8'
+
+insert into dengji(did,dname,dsex,dage,dbirth,droom,ddoctor,dgms,dtel,dylk,dylkNum,dnext,dymiao,dlrtime,dpeo,dbiaoji,dtimes,fkdocid)
+values('1209','张三','男','40','10-12','102','历官群','无','13798798765','有','983428334244','2018-10-19','狂犬疫苗、甲肝疫苗...','2018-9-19','护士','摩卡大家看见打卡机打开文件大斯柯达健康为代价阿达伟大伟大','2018-9-19','mlx01'); 
+insert into dengji(did,dname,dsex,dage,dbirth,droom,ddoctor,dgms,dtel,dylk,dylkNum,dnext,dymiao,dlrtime,dpeo,dbiaoji,dtimes,fkdocid)
+values(rand(),'李四','女','12','8-12','102','金银花','无','13798798765','有','983428334244','2018-10-19','狂犬疫苗、甲肝疫苗...','2018-12-19','蒋经国','和关键环节换个环境感觉会更好共和国和','2018-9-10','mlx02'); 
+
+
+insert into doctor(docid,docname,docsex,docage,dochy,docmin,docxue,docyuan,doctel,docemail,doczhiye,doczige,docks,docjibie,docnianxian,docjia)
+values('mlx01','历官群','男','70','已婚','汉族','博士','哈尔滨华德学院','13245678907','2435556765@qq.com','89789787','768768688','102','高级医师','30','木兰县大街'); 
+
+
+select * from dengji
+select * from doctor
+select * from dengji,doctor where fkdocid=docid 
+
+create table cku( 
+kid varchar(50) primary key, 
+kname varchar(50), 
+ksl varchar(50),
+kmoney varchar(50),
+kpeo varchar(50),
+ktel varchar(50),
+kgys varchar(50),
+kck varchar(50)
+)charset='utf8'
+
+select * from cku
+
+insert into cku(kid,kname,ksl,kmoney,kpeo,ktel,kgys,kck)values(rand()*100000000000000,'123','1000','4000','老加班','13798767890','第一仓库','2019-09-08')
+
+
+
+pid,pname,psl,pmoney,ppeo,ptel,pgys,pck,pshpeo
+入库单号    入库疫苗明细  入库数量   入库疫苗金额   仓库名称   入库类型  入库时间  入库操作人   状态   手机号
+
+
+create table sr( 
+srid varchar(50) primary key, 
+srmoney varchar(50), 
+srdate varchar(50)
+)charset='utf8'
+select * from dengji
+select ppeo,count(*) s,pmoney from pan group by ppeo
+insert into sr(srid,srmoney,srdate)values(rand(),'1534','2018-01-08')
+insert into cku(kid,kname,ksl,kmoney,kpeo,ktel,kgys,kck)values(rand()*100000000000000,'123','1000','4000','老加班','13798767890','第一仓库','2019-09-08')

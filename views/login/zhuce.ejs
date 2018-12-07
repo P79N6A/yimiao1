@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/boostrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
+    <script src="/boostrap-select/js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+
+  </head>
+  <body>
+   <form method="post" action="/login/saveUser" id="form1" class="form-horizontal">
+   <div class="panel panel-primary" style="margin:20px">
+		<div class="panel-heading">
+                  <h3 class="panel-title">用户注册</h3>
+                </div>
+		<div class="panel-body">
+			  <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">用户名:</label>
+			  <div class="col-sm-5">
+			    <input type="text" class="form-control" name="username" id="username"  placeholder="请输入用户名">
+			  </div>
+			 </div>
+			
+			 <div class="form-group">
+			  <label for="firstname" class="col-sm-2 control-label">密码:</label>
+			  <div class="col-sm-5">
+			     <input type="password" class="form-control" name="password" id="password"   placeholder="请输入密码">
+		
+			  </div>
+			 </div>	
+			 <div class="form-group">
+			  <label for="firstname" class="col-sm-2 control-label">确认密码:</label>
+			  <div class="col-sm-5">
+			     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="请输入确认密码"  >
+		
+			  </div>
+			 </div>	
+			 <div class="form-group">
+			  <label for="firstname" class="col-sm-2 control-label">昵称:</label>
+			  <div class="col-sm-5">
+			     <input type="text" class="form-control" name="nicheng" id="nicheng"  placeholder="请输入昵称" >
+		
+			  </div>
+			 </div>	
+			 <div class="form-group">
+			  <label for="firstname" class="col-sm-2 control-label">出生日期:</label>
+			  <div class="col-sm-5">
+			     <input type="text" class="form-control" name="birthday" id="birthday" 
+			       onclick="WdatePicker()" readonly value="1970-01-01" placeholder="请输入出生日期" >
+			  </div>
+			 </div>	
+			 <div class="form-group"> 
+				     <label for="firstname" class="col-sm-2 control-label">性别:</label> 
+				     <div class="col-sm-5"> 
+					     <label class="radio-inline"> 
+					     <input type="radio" name="sex" value="男" checked >男 
+					     </label> 
+					     <label class="radio-inline"> 
+					     <input type="radio" name="sex" value="女" >女 
+					     </label> 
+         
+                                      </div> 
+                         </div>     
+			 <div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">邮箱:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="email" id="email"   placeholder="请输入邮箱" >
+				  </div>
+			 </div>	
+			 <div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">手机:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="phone" id="phone"  placeholder="请输入手机" >
+				  </div>
+			 </div>	
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">省:</label>
+			    <div class="col-sm-5">
+			        
+				  <select name="sheng" class="form-control selectpicker" id="sheng" onchange="_showshi()"  data-live-search="true" data-live-search-placeholder="搜索">
+					   <%for(var i=0;i<datas.length;i++){%> 
+					     <option value="<%=datas[i].name%>" id="<%=datas[i].id%>"><%=datas[i].name%></option> 
+					     
+					   <%}%> 
+
+				  </select>
+			    </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">市:</label>
+			    <div class="col-sm-5">
+			         <select class="form-control selectpicker"  onchange="_showqu()" id="shi" name="shi"   data-live-search="true" data-live-search-placeholder="搜索"> </select>
+                              
+			    </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">区:</label>
+			    <div class="col-sm-5">
+			         <select class="form-control selectpicker" id="qu" name="qu"   data-live-search="true" data-live-search-placeholder="搜索"> </select>
+                              
+			    </div>
+			 </div>
+			  <div class="form-group">
+			         
+				  <div class="col-sm-offset-6 col-sm-3" >
+				    <button type="button"  id="sb" onclick="_tj()" class="btn btn-primary" style="width:78px">提交</button>
+				  </div>
+			  </div>
+		</div>
+      </div>
+ </form>
+</body>
+</html>
+
+<script>
+   $(document).ready(function(){
+	//显示 市
+	_showshi();
+        //设置验证
+        $('#form1').bootstrapValidator({ 
+            //默认失去焦点时验证 
+            live: 'disabled', 
+
+            //通用错误信息 
+            message: '该内容不合法', 
+            //图标-对号 X 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            //字段验证 
+            fields: { 
+                         phone: { 
+                               validators: { 
+                                    notEmpty: { 
+                                         message: '手机号不能为空' 
+                                    } ,
+				    regexp: { 
+                                         regexp: /^1\d{10}$/, 
+                                         message: '手机号格式不和法' 
+                                    }
+                               } 
+                         }, 
+			 username: { 
+			     
+			       //threshold:3,//3个字符开始验证
+                               validators: { 
+				       notEmpty: { 
+					    message: '用户名不能为空' 
+				       }, 
+				       stringLength: { 
+					    min: 3, 
+					    max: 30, 
+					    message: '长度在3-30之间' 
+				       }, 
+				       regexp: { 
+					    regexp: /^[a-zA-Z0-9_\.]+$/, 
+					    message: '数字 字母 下划线组成' 
+				       }, 
+				       remote: {
+						 //ajax验证。server result:{"valid":true}  或者{"valid":false}
+						 url: '/login/ajax1',
+						 message: '员工名已存在',
+						 //delay:500,//设置0.5秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+						 type:'get',
+						 data: function(validator) {
+						       //传值
+						       return {
+							   a: $("#username").val()
+							 
+						       };
+						 }	
+				       }
+                              } 
+                         },
+			 password: { 
+                                 validators: { 
+                                       notEmpty: { 
+                                              message: '密码不能为空' 
+                                       },
+				       stringLength: { 
+					    min: 3, 
+					    max: 20, 
+					    message: '长度在3-20之间' 
+				       }
+                                 } 
+                         }, 
+                         confirmPassword: { 
+                                 validators: { 
+                                       identical: { 
+                                             field: 'password', 
+                                             message: '两次密码不一致' 
+                                       }
+
+                                  } 
+                        }, 
+			email: { 
+                                 validators: { 
+				       notEmpty: { 
+					    message: '邮箱不能为空' 
+				       }, 
+                                       emailAddress: { 
+                                            message: '邮箱格式不合法' 
+                                       },
+				       stringLength: { 
+					    max: 15, 
+					    message: '长度不能超过25个字' 
+				       }
+                                 } 
+                        }, 
+			nicheng: { 
+                                 validators: { 
+                                       notEmpty: { 
+                                            message: '昵称必填' 
+                                       },
+				       stringLength: { 
+					    max: 10, 
+					    message: '长度不能超过10个字' 
+				       }
+                                 } 
+                        }
+
+                  
+                } 
+          }); 
+	  //设置结束
+    })
+
+   //提交表单  
+   function _tj(){
+      //获取表单对象 
+       var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+       //手动触发验证 
+       bootstrapValidator.validate(); 
+       //判断是否都合法 
+       if(bootstrapValidator.isValid()){ 
+		//提交表单 注意 不能用 jquery对象 必须用dom对象 
+		$('#form1')[0].submit(); 
+
+       } 
+   }
+
+
+   function _showshi(){
+         jQuery.ajax( 
+            { 
+            type: "get", //传值方式 
+            url: "/login/querycity", //访问路径 
+            async:true, //设为异步 
+            data:{id:$("#sheng option:selected").attr("id")}, //传值串或json 
+            // 回调方法 
+            success: function(data) 
+            { 
+	       
+                // 清空 
+                $("#shi").empty(); 
+                //循环造option 
+                for(var i=0;i<data.length;i++){ 
+
+                       $("#shi").append("<option value="+data[i].name+"  id="+data[i].id+">"+data[i].name+"</option>"); 
+		       $('#shi').selectpicker('refresh');  
+                } 
+		//调用显示区
+		_showqu();
+
+            } ,
+	    error:function(){
+               alert("查询城市失败");
+	    }
+        }); 
+
+   }
+
+   function _showqu(){
+         jQuery.ajax( 
+            { 
+            type: "get", //传值方式 
+            url: "/login/querycity", //访问路径 
+            async:true, //设为异步 
+            data:{id:$("#shi option:selected").attr("id")}, //传值串或json 
+            // 回调方法 
+            success: function(data) 
+            { 
+                // 清空 
+                $("#qu").empty(); 
+                //循环造option 
+                for(var i=0;i<data.length;i++){ 
+
+                       $("#qu").append("<option value="+data[i].name+"  id="+data[i].id+">"+data[i].name+"</option>"); 
+		       $('#qu').selectpicker('refresh');  
+                } 
+            } ,
+	    error:function(){
+               alert("查询区失败");
+	    }
+        }); 
+
+   }
+</script>
+

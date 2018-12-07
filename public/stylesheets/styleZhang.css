@@ -1,0 +1,67 @@
+.table800{ width: 800px;}
+.table1200{ width: 3000px!important; min-width: 3000px!important;}
+.lia{ width:100%;}
+.BgCor{background: -webkit-linear-gradient(left, #74aaff , #9fc2ff)!important; 
+  background: -o-linear-gradient(right, #74aaff, #9fc2ff)!important; 
+  background: -moz-linear-gradient(right, #74aaff, #9fc2ff)!important; 
+  background: linear-gradient(to right, #74aaff , #9fc2ff)!important; }
+/*打印新table*/
+.marginL20{ margin-left: 20px;}
+.tableDate{ margin-top: 7px; float: right;}
+.tableCol{ height: 30px; border-top: none;}
+.tableCol div{ float: left;}
+.tableColOne{ float: left;}
+.tableColOne img{ max-height:50px; max-width:50px; width: 50px; height: 50px;}
+.tableTitel{ line-height: 50px;font-size: 20px;width: 48%;margin-left: 220px; float: left;}
+.tableBian{ float: left; font-size: 17px;}
+.threeTd{     max-width: 370px;width: 370px;}
+.tableFooter{     text-align: left!important;}
+#sb{ float: right; width: 150px;}
+.sb{ float: right; width: 150px;}
+#dayin{float: right; margin-right: 20px;}
+.jzName{ margin-left: 12px;}
+.help-block{     margin-top: -5px!important;margin-left: 13px!important;}
+.delbtn{ background: none;}
+/*售空疫苗*/
+.fkBigs{ margin-left: 270px;}
+.skLable{ float: left; margin-top: 8px;margin-right: 35px;}
+.skInput{ float: left; }
+.skput{ width: 600px;!important}
+.fkBtn{ width: 300px; height: 30px; margin: auto; display: block; color: #fff; font-size: 16px; background: #2882CE; border-radius: 10px; border: 1px solid #2882CE;}
+.fkBtn:focus{ outline: none;}
+.skzt{ width: 75px;padding-left: 42px;}
+.skzt2{     width: 75px;padding-left: 14px;}
+/*注意事项*/
+#zysxTit{ text-align: center; display: block;    font-size: 20px;font-family: '微软雅黑';}
+/*详情行程*/
+.xq-container{ height: 60px; width: 100%;/* background: red; */}
+.xq-container .xq-containerL{ float: left; background: url(../img/Oneday.png) 0 0 no-repeat;background-size:100% 100%;width: 25px; height: 60px; color: #fff; text-align: center;  line-height: 16px; font-family: "微软雅黑"; font-weight: bold;     font-size: 13px; padding-top: 4px; }
+.xq-container .xq-containerR{ float: left;     width: 96%;}
+.xq-container .xq-containerR .xq-conRTop{ margin-left: 10px;margin-top: 7px;font-size: 14px;font-family: '微软雅黑';color: #9E9E9E;}
+.xq-container .xq-containerR .xq-conRBot{ margin-left: 10px;margin-top: 2px;font-size: 18px;font-family: '微软雅黑';color: #000;     height: 32px;border-bottom: 1px solid #ECECEC;}
+.bgxq-main{width: 100%; height: 100%;}
+.bgxq-main .xq-main{float: left; border-left: 1px solid #ECECEC; /*  height: 1500px;  */   width: 100%;  margin-left: 12px; margin-top: 3px;/* position: absolute;*/}
+.bgxq-main .xq-main .xq-mainOne{width: 97%; }
+.xq-MOne{ background: #fff; margin-left: -13px; margin-top: 5px;     height: 30px; font-family: "微软雅黑"; font-size: 20px; color: #000; }
+.xq-MOne img{ width: 25px; height: 25px; margin-right:15px;     margin-bottom: 5px; }
+.xq-MTwo{     margin-left: 28px;     height: 30px; font-family: "微软雅黑"; font-size: 17px; color: #000; }
+.xq-MThree{     margin-left: 28px; font-family: "微软雅黑"; font-size: 18px; color: #000;width:98%;padding-bottom: 11px;border-bottom: 1px solid #ECECEC;    line-height: 30px;}
+.MTwoFont{ color: #787878; font-family: "微软雅黑";}
+.xq-Pic img{width: 422px;height: 260px;border-radius: 10px;margin-left: 28px;}
+.xp-btn{ text-align: center; padding-top: 50px; margin-left: -2px; background: #fff;}
+.xp-btn button{ width: 150px; height: 40px; border-radius: 10px; background: #37B7FF; color: #FFF;margin-bottom: 60px; }
+.xq-Bianbtn{     width: 27px;height: 18px; line-height:18px; margin-left: 15px;border:none; color: #2FBFFF; background: none/*border-radius: 5px;border: none;color: #fff;font-size: 13px;background: #9b93ff;*/}
+.xq-delbtn{     width: 27px;height: 18px;margin-left: 8px;line-height:18px; border:none; color: #2FBFFF; background: none/*border-radius: 5px;border: 1px solid #9b93ff;color: #9b93ff;font-size: 13px;background: #fff; line-height: 15px;*/}
+/*采购单*/
+.cgbtn1{ background: #337ab7!important;}
+/* 统计图 */
+.picBig{ overflow:hidden}
+.blpic{ width: 500px; height: 600px; background:red}
+#chart1div{ width: 600px!important; height: 500px!important; float:left}
+#chart3div{ width: 600px!important; height: 500px!important; float:left;}
+#chart5div{ width: 600px!important; height: 500px!important; float:left;}
+#chart6div{ width: 600px!important; height: 500px!important; float:left;}
+#chartmoneydiv{ width: 600px!important; height: 500px!important; float:left;}
+.tablewidth{ width: 500px;     margin: auto;}
+.width8{ width: 800px!important;}
+.taborder input{ background: none; border: none!important;}

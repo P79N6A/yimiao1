@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+
+  </head>
+
+  <body>
+   <form method="post" action="/stu/pansave" id="form1" class="form-horizontal">
+   <div class="panel panel-primary" style="margin:20px; height:630px">
+		<div class="panel-heading" style="height:60px; background-image:url(/yidong/images/bg6.png)">
+      <img style="float:left" src="/yidong/images/hd3.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站入库管理</h3>
+    </div>
+		<div class="panel-body" style="background: #C0CEF2;" >
+			<!--<img src="/yidong/images/biaoban5.png" style="position: absolute;  top: 80px; left: 21px;">-->
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">入库单号:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="pid" id="pid"  placeholder="请输入入库单号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库疫苗明细:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="pname" id="pname"  placeholder="请输入入库疫苗明细">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库数量:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="psl" id="psl"  placeholder="请输入入库数量">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库疫苗金额:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="pmoney" id="pmoney"  placeholder="请输入入库疫苗金额">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">仓库名称:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ppeo" id="ppeo"  placeholder="请输入仓库名称">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库类型:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ptel" id="ptel"  value="采购入库">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库时间:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" onclick="WdatePicker()" readonly value="1970-01-01" name="pgys" id="pgys"  placeholder="Date">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">入库操作人:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="pck" id="pck"  placeholder="请输入入库操作人">
+				  </div>
+			 </div>
+				<div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">状态:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="ptime" id="ptime" 
+				        value="已入库" >
+				  </div>
+				 </div>	
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">手机号:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="pshpeo" id="pshpeo"  placeholder="请输入手机号">
+				  </div>
+			 </div>
+			  <div class="form-group">
+				  <div class="col-sm-offset-6 col-sm-3" >
+				    <button type="button"  id="sb" onclick="_tj()"  class="btn btn-primary" style="width:78px">提交</button>
+				  </div>
+			  </div>
+		</div>
+  </div>
+       </form>
+  </body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+     
+   function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+   
+   $(document).ready(function(){
+          
+	  
+          
+	      //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({
+		        //live: 'disabled',
+			message: 'This value is not valid',
+			feedbackIcons: {
+			    valid: 'glyphicon glyphicon-ok',
+			    invalid: 'glyphicon glyphicon-remove',
+			    validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				    pname: {
+					validators: {
+					    notEmpty: {
+						message: '姓名为必填项'
+					    }
+					}
+				    }
+			}
+	      })
+              //bootstrapValidator-end
+	
+
+
+
+       
+	    
+
+    }); 
+
+</SCRIPT>

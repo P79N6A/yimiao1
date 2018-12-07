@@ -1,0 +1,26 @@
+CREATE TABLE `renyuan` (
+  `rid` varchar(50) default NULL,
+  `num` varchar(10) default NULL,
+  `rname` varchar(50) default NULL,
+  `sex` varchar(10) default NULL,
+  `age` varchar(10) default NULL,
+  `birth` varchar(50) default NULL,
+  `email` varchar(50) default NULL,
+  `phone` varchar(50) default NULL,
+  `wokeyear` varchar(50) default NULL,
+  `intowokeyear` varchar(50) default NULL,
+  `place` varchar(50) default NULL,
+  `fkdeptid` varchar(50) default NULL
+) charset='utf8' 
+
+
+select * from renyuan
+
+
+insert into renyuan(rid,num,rname,sex,age,birth,email,phone,wokeyear,intowokeyear,place,fkdeptid)values(rand(),'008','王慕笙','男','57','1965-09-09','13213@qq.com','13786676789','20','2008-01-09','木兰县政府广场对面','a');
+insert into renyuan(rid,num,rname,sex,age,birth,email,phone,wokeyear,intowokeyear,place,fkdeptid)values(rand(),'005','常方','女','32','1985-01-23','130978654@qq.com','1394353534','11','2012-02-09','木兰县购物大厦广场时代教育大楼','b');
+insert into renyuan(rid,num,rname,sex,birth,email,wokeyear,fkdeptid)values(rand(),'002','李福湖','44','1977-09-09','33453@qq.com','12','b');
+
+select * from dept
+
+select * from renyuan,dept where renyuan.fkdeptid=dept.deptid

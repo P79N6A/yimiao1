@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <link rel="stylesheet" type="text/css" href="/yidong/css/daterangepicker.min.css"/>
+    <script src="/yidong/js/moment.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+     <script type="text/javascript" src="/yidong/js/jquery.daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <style type="text/css">
+    	th{
+    		color: #fff!important;
+    	}
+    </style>
+  </head>
+  <body>
+	  <div class="panel panel-primary" style="margin:20px; border:1px solid #2882CE ">
+			<div class="panel-heading" style="height:60px;">
+	      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站添加仓库</h3>
+	    </div>
+			<div class="panel-body">
+			    <form method="post" action="/stu/ckuupdates" id="form1">
+			    	<input type="hidden" name="kid" >
+						<div class="panel panel-default">
+							<div class="panel-body" >
+								<div class="row">
+									  <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable" style="margin-left: 13px;">仓库名称:</label>
+										  <div class="skInput">
+										    <input type="text" class="form-control skput" name="kname" id="kname"  placeholder="请输入仓库名称">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable" style="margin-left: 13px;">仓库地址:</label>
+										  <div class="skInput">
+										    <input type="text" class="form-control skput" name="ksl" id="ksl"  placeholder="请输入仓库地址">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">管理员联系电话:</label>
+										  <div class="skInput">
+										    <input type="text" placeholder="请输入管理员（工号）/联系电话" name="kmoney" class="form-control skput" id="kmoney">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">仓库状态:</label>
+										  <div class="skInput">
+										    <input type="text" placeholder="请输入仓库状态" id="timeNav" class="form-control skput" name="kpeo" id="kpeo">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">创建时间:</label>
+										  <div class="skInput">
+										    <input type="text" placeholder="Date" id="timeNav" class="form-control skput dataTime1" name="ktel" id="ktel">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">最后一次修改时间:</label>
+										  <div class="skInput">
+										    <input type="text" placeholder="Date" id="timeNav" class="form-control skput dataTime" name="kgys" id="kgys">
+										  </div>
+									 </div>
+									 <div class="form-group clearfix fkBigs">
+									    <label for="firstname" class="control-label skLable skzt2">操作人:</label>
+										  <div class="skInput">
+										    <input type="text"  name="kck" placeholder="请输入操作人" id="timeNav" class="form-control skput" id="kck">
+										  </div>
+									 </div>
+									 <div id=""><button  class="fkBtn" onclick="_tj()">提交保存</button></div>
+							 	</div>
+							</div>
+						</div>
+			   </form>   
+			</div>
+	  </div>
+  </body>
+</html>
+
+<script>
+	$('.dataTime').dateRangePicker({
+				autoClose: true,
+				singleDate : true,
+				showShortcuts: false,
+				singleMonth: true
+			
+		 });
+		 $('.dataTime1').dateRangePicker({
+				autoClose: true,
+				singleDate : true,
+				showShortcuts: false,
+				singleMonth: true
+			
+		 });
+    	function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+    	
+//	function yin(){
+//		$("#form1").submit();
+//	}
+	
+    
+//  function _del(){
+//       
+//       if($("[name=ids]:checked").length==0){
+//         alert("至少选中一个");     
+//	 }
+//	 else{
+//           if(confirm("确定删除吗?")){
+//		    // 提交表单
+//		   $("#form1").submit();
+//	     } 
+//	 }
+//  }
+
+
+    $(document).ready(function(){
+					var emps=JSON.parse('<%-JSON.stringify(emps)%>');
+		    $("[name=kid]").val(emps[0].kid);
+			  $("[name=kname]").val(emps[0].kname);
+			  $("[name=ksl]").val(emps[0].ksl);
+			  $("[name=kmoney]").val(emps[0].kmoney);
+			  $("[name=kpeo]").val(emps[0].kpeo);
+			  $("[name=ktel]").val(emps[0].ktel);
+			  $("[name=kgys]").val(emps[0].kgys);
+			  $("[name=kck]").val(emps[0].kck);
+          //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({ 
+           
+            message: '该内容不合法', 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            fields: { 
+                         kname: { 
+                               validators: { 
+                                    notEmpty: { 
+                                          message: '不能为空' 
+                                    } 
+                               } 
+                         },  
+                } 
+          }); 
+	  
+
+    }); 
+</script>
+

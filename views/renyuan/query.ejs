@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="/javascripts/jquery.min.js"></script>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  </head>
+  <body>
+  <div class="panel panel-primary" style="margin:20px; border:3px solid #6ec673 ">
+		<div class="panel-heading" style="height:60px; background-image:url(/yidong/images/hd1.png)">
+                  <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站人员详细信息</h3>
+                </div>
+		<div class="panel-body">
+		    <form method="post" action="/emp/dels" id="form1">
+
+			       <table class="table table-bordered table-hover table-striped" style="margin-top: 20px; border: 2px solid #6ec673;">
+				     
+				       <thead>
+				       <tr style="  background-color:#b4f0b7 ">
+					       <th style="color:#6ec673; " ><input type="checkbox"></th>
+					       <th style="color:#6ec673">序号</th>
+					       <th style="color:#6ec673">工号</th>
+					       <th style="color:#6ec673">名字</th>
+					       <th style="color:#6ec673">性别</th>
+					       <th style="color:#6ec673">年龄</th>
+					       <th style="color:#6ec673">出生</th>
+					       <th style="color:#6ec673">e-mail</th>	
+					       <th style="color:#6ec673">电话</th>
+					       <th style="color:#6ec673">工作年限</th>
+					       <th style="color:#6ec673">参加工作时间</th>
+					       <th style="color:#6ec673">现住址</th>
+					       <th style="color:#6ec673">所属部门</th>
+					       <th style="color:#6ec673">操作</th>
+				       </tr>
+				       </thead>
+				       <tbody id="tb1">
+					
+				       </tbody>
+			       </table>
+
+			<%if(count>0){%>
+
+					<%
+					   var a=Math.floor((pageNo-1)/5)*5+1;
+					   var c=Math.floor((zongye-1)/5)*5+1;
+					   var b=5;
+					   //判断是否最后一页
+					   if(a==c){
+	                                       b=zongye-a+1;
+					   }
+
+					%>
+	                                
+
+			       <ul class="pager" style="float:right; margin-top:0px;">
+				   <li>共<%=count%>条 <%=pageNo%>/<%=zongye%> </li>
+				    <li><a href="javascript:_go(1)" style="color: #6ec673">首页</a></li>
+				    <%if(pageNo!=1){%>
+				    <li><a href="javascript:_go(<%=pageNo-1%>)" style="color: #6ec673">上页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">上页</a></li>
+					 <%}%>
+					 <%if(pageNo!=zongye){%>
+					   <li><a href="javascript:_go(<%=pageNo-(-1)%>)" style="color: #6ec673">下页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">下页</a></li>
+					 <%}%>
+				    <li><a href="javascript:_go(<%=zongye%>)" style="color: #6ec673">尾页</a></li>
+				</ul>
+
+
+				<script>
+                                   function _go(pn){
+                                       $("#form1").append("<input type=hidden name=pageNo value="+pn+"  >");
+                                       $("#form1").attr("action","/emp");
+				       $("#form1").submit();
+				   }
+			      </script>
+			<%}%>
+			     
+
+			    
+			     
+		   </form>     
+		  
+		</div>
+  </div>
+      
+  
+  </body>
+</html>
+
+<script>
+    
+    function _del(){
+         
+         if($("[name=ids]:checked").length==0){
+           alert("至少选中一个");     
+	 }
+	 else{
+             if(confirm("确定删除吗?")){
+		    // 提交表单
+		   $("#form1").submit();
+	     } 
+	 }
+    }
+
+
+    $(document).ready(function(){
+          
+	  var datas=JSON.parse('<%-JSON.stringify(rows1)%>');
+
+	  for(var i=0;i<datas.length;i++){
+             var tr="<tr>"  +
+	            "<td><input type=checkbox name=ids value="+datas[i].rid+"  /></td>"+
+		    "<td>"+(i+1)+"</td><td>"+datas[i].num+"</td> <td>"+datas[i].rname+"</td>" +
+		    "<td>"+datas[i].sex+"</td>"+
+		    "<td>"+datas[i].age+"</td>"+
+		    "<td>"+datas[i].birth+"</td>"+
+		    "<td>"+datas[i].email+"</td>"+
+		    "<td>"+datas[i].phone+"</td>"+
+		    "<td>"+datas[i].wokeyear+"</td>"+
+		    "<td>"+datas[i].intowokeyear+"</td>"+
+		    "<td>"+datas[i].place+"</td>"+
+		    "<td>"+datas[i].deptname+"</td>"+
+
+
+		    "<td><a href=\"javascript:_test('"+datas[i].eid+"','"+datas[i].ename+"')\">测试</a></td> </tr>";
+
+	          
+	            $("#tb1").append(tr);
+	  }  
+
+    }); 
+
+
+    function  _test(rid,rname){
+       alert(rid+"----"+rname);
+
+    }
+
+
+    function _query(){
+            
+             $("#form1").attr("action","/emp");
+	     $("#form1").submit();
+				
+
+       }
+</script>
+

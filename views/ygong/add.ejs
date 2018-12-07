@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+
+  </head>
+
+  <body>
+   <form method="post" action="/ygong/save" id="form1" class="form-horizontal">
+   <div class="panel panel-primary" style="margin:20px">
+		<div class="panel-heading">
+      <h3 class="panel-title">木兰县防疫站员工信息添加</h3>
+    </div>
+		<div class="panel-body">
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">姓名:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygname" id="ygname"  placeholder="请输入名字">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			  <label for="firstname" class="col-sm-2 control-label">性别:</label>
+			  <div class="col-sm-5">
+			     <label class="radio-inline">
+			       <input type="radio" name="ygsex" value="男" checked >男
+			     </label>
+			     <label class="radio-inline">
+			       <input type="radio" name="ygsex" value="女"  >女
+			     </label>
+			  </div>
+			 </div>	
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">年龄:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygage" id="ygage"  placeholder="请输入年龄">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">出生日期:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygbirth" id="ygbirth"  placeholder="请输入出生日期">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">聘用时间:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygroom" id="ygroom"  placeholder="请输入聘用时间">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">文化程度:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygdoctor" id="ygdoctor"  placeholder="请输入聘用时间">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">政治面貌:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="yggms" id="yggms"  placeholder="请输入政治面貌">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">籍贯:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygtel" id="ygtel"  placeholder="请输入籍贯">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">民族:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygylk" id="ygylk"  placeholder="请输入民族">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">电话:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygylkNum" id="ygylkNum"  placeholder="请输入电话">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">身份证号:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygnext" id="ygnext"  placeholder="请输入身份证号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">资格证书编码:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ygymiao" id="ygymiao"  placeholder="请输入身份证号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">现居住地址:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="yglrtime" id="yglrtime"  placeholder="请输入身份证号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">部门:</label>
+			    <div class="col-sm-5">
+			        
+			      <select name="c" class="form-control" id="sel">
+					  </select>
+                              
+			    </div>
+			 </div>
+
+			  <div class="form-group">
+			         
+				  <div class="col-sm-offset-6 col-sm-3" >
+				    <button type="button"  id="sb" onclick="_tj()"  class="btn btn-primary" style="width:78px">提交</button>
+				  </div>
+			  </div>
+		  
+		</div>
+  </div>
+
+
+     
+
+    
+       </form>
+  </body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+     
+   function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+   
+   $(document).ready(function(){
+          
+	  var datas=JSON.parse('<%-JSON.stringify(datas)%>');
+
+	  for(var i=0;i<datas.length;i++){
+             var opt="<option value=\""+datas[i].deptid+"\">"+datas[i].deptname+"</option>";
+
+	          
+	     $("#sel").append(opt);
+	  }
+          
+	      //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({
+		        //live: 'disabled',
+			message: 'This value is not valid',
+			feedbackIcons: {
+			    valid: 'glyphicon glyphicon-ok',
+			    invalid: 'glyphicon glyphicon-remove',
+			    validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				    ygname: {
+					validators: {
+					    notEmpty: {
+						message: '姓名为必填项'
+					    }
+					}
+				    }
+			}
+	      })
+              //bootstrapValidator-end
+	
+
+
+
+       
+	    
+
+    }); 
+
+</SCRIPT>

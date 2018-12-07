@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <link rel="stylesheet" type="text/css" href="/yidong/css/daterangepicker.min.css"/>
+    <script src="/yidong/js/moment.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/yidong/js/jquery.daterangepicker.min.js"></script>
+    <script type="text/javascript" src="/yidong/js/jQuery.print.js"></script>
+    
+    <style type="text/css">
+    	input{
+    		border: none!important;
+    	}
+    	input:focus{ outline: none!important;}
+    </style>
+  </head>
+  <body>
+	  <div class="panel panel-primary" style="margin:20px; border:1px solid #6ec673 ">
+			<div class="panel-heading" style="height:60px;">
+	      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">疫苗冷链运输记录</h3>
+	    	<button type="button"  id="dayin" onclick="yin()"  class="btn btn-primary">打印冷链运输记录</button>
+			</div>
+			<div class="panel-body" id="yinS">
+			    <form method="post" action="/emp/dengjiSave" id="form1" class="form-horizontal">
+						<table  class="table table-bordereds suppliermodal2 table800 marginL20" style="margin-left: 135px;">
+	            <thead>
+		        		<tr>
+		            		<th class="" style="border: none;" colspan="4">
+		                	<div class="tableColOne"><img src="/yidong/images/logoM.png"/></div>
+		                	<div class="tableTitel">木兰县防疫站冷链运输记录</div>
+		                </th>
+		            </tr>
+		        		<tr>
+		                <th class="" colspan="5">
+		                	<div class="">接种点名称：<span>木兰县防疫站<span></div>
+		                </th>
+		            </tr>
+	            </thead>
+	            <tbody>
+	                <tr class="firsttr">
+	                    <th colspan="5" class="tableFooter">疫苗运输工具：<input name='dsex'></input></th>
+	                </tr>
+	                <tr class="firsttr">
+	                    <th colspan="5" class="tableFooter">疫苗冷藏方式：<input name='dsex'></input></th>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">启运(时间年/月/日)：<input placeholder="Date" id="timeNav" class="dataTime2" name='dsex'></input></td>
+	                    <td class="tableFooter">疫苗存储温度：<input style="width: 35px;" name='dage'></input>℃</td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">到达(时间年/月/日)：<input placeholder="Date" id="timeNav" class="time_length timeNavwid dataTime tourTime" name='dbirth'></input></td>
+	                    <td class="tableFooter">疫苗存储温度：<input style="width: 35px;" name='droom'></input>℃</td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="5" class="tableFooter">运输疫苗：<input name='ddoctor'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="5" class="tableFooter">启运至返回时行程公里数：<input name='ddoctor'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">送货单位：<input name='dbirth'></input></td>
+	                    <td class="tableFooter">送货人签名：<input style="border-bottom: 1px solid #000000!important;" name='droom'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">收货单位：<input name='dbirth'></input></td>
+	                    <td class="tableFooter">收货人签名：<input  style="border-bottom: 1px solid #000000!important;" name='droom'></input></td>
+	                </tr>
+	            </tbody>
+			</table>
+			   </form> 
+			</div>
+	  </div>
+  </body>
+</html>
+
+<script>
+	function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               bootstrapValidator.validate(); 
+               if(bootstrapValidator.isValid()){ 
+                        $('#form1')[0].submit(); 
+               } 
+   }
+	function yin(){
+              $("#yinS").print(/*options*/);
+        
+   }
+		$('.dataTime').dateRangePicker({
+			autoClose: true,
+			singleDate : true,
+			showShortcuts: false,
+			singleMonth: true
+			
+		 });
+		 $('.dataTime2').dateRangePicker({
+			autoClose: true,
+			singleDate : true,
+			showShortcuts: false,
+			singleMonth: true
+			
+		 });
+
+    $(document).ready(function(){
+//  	alert(1)
+          //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({ 
+           
+            message: '该内容不合法', 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            fields: { 
+                         dname: { 
+                               validators: { 
+                                    notEmpty: { 
+                                          message: '不能为空' 
+                                    } 
+                               } 
+                         },  
+                } 
+         }); 
+    }); 
+</script>
+

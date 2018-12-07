@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="/stylesheets/styleZhang.css">
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/yidong/js/jQuery.print.js"></script>
+    <script type="text/javascript" src="/javascripts/jszip.min.js"></script>
+    <script type="text/javascript" src="/javascripts/excel-gen.js"></script>
+    <script type="text/javascript" src="/javascripts/FileSaver.js"></script>
+    <script type="text/javascript" src="/javascripts/demo.page.js"></script>
+  </head>
+  <body>
+   <form method="post" action="/stu/cgupdates" id="form1" class="form-horizontal">
+   	<input type="hidden" name="cgid" >
+   <div class="panel panel-primary" style="margin:20px; height:630px">
+		<div class="panel-heading" style="height:60px; background-image:url(/yidong/images/bg6.png)">
+      <img style="float:left" src="/yidong/images/hd3.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站疫苗采购信息</h3>
+    	<button type="button"  id="dayin" onclick="yin()"  class="btn btn-primary">打印采购单</button>
+    	<button type="button"  id="generate-excel" class="btn btn-primary">导出</button>
+		</div>
+		<div class="panel-body" style="background: #C0CEF2;">
+			<!--<img src="/yidong/images/biaoban5.png" style="position: absolute;  top: 80px; left: 21px;">-->
+				<div class="table-responsive">
+				  <table class="table tablewidth" id="yinS" >
+				    <thead>
+				    </thead>
+				    <tbody class="taborder" >
+				      <tr class="">
+				        <th class="">采购单号</th>
+				        <td><input type="text" class="" name="cid" id="cid"  placeholder="请输入采购单号"></td></tr>
+				      <tr>
+				        <th>采购疫苗明细</th>
+				        <td><input type="text" class="" name="cname" id="cname"  placeholder="请输入采购单号"></td></tr>
+				      <tr>
+				        <th>采购数量</th>
+				        <td> <input type="text" class="" name="csl" id="csl"  placeholder="请输入采购数量"></td></tr>
+				      <tr>
+				        <th>采购金额</th>
+				        <td><input type="text" class="" name="cmoney" id="cmoney"  placeholder="请输入采购金额"></td></tr>
+				      <tr>
+				        <th>采购人</th>
+				        <td> <input type="text" class="" name="cpeo" id="cpeo"  placeholder="请输入采购疫苗明细"></td></tr>
+				      <tr>
+				        <th>采购人手机号</th>
+				        <td> <input type="text" class="" name="ctel" id="ctel"  placeholder="请输入采购人手机号"></td></tr>
+				      <tr>
+				        <th>供应商</th>
+				        <td><input type="text" class="" name="cgys" id="cgys"  placeholder="请输入供应商"></td></tr>
+				      <tr>
+				        <th>仓库名称</th>
+				        <td><input type="text" class="" name="cck" id="cck"  placeholder="请输入仓库名称"></td></tr>
+				      <tr>
+				        <th>采购时间</th>
+				        <td><input type="text" class="" name="ctime" id="ctime" 
+				       onclick="WdatePicker()" readonly value="1970-01-01" placeholder="请输入采购时间" ></td></tr>
+				      <tr>
+				        <th>审核操作人</th>
+				        <td><input type="text" class="" name="cshpeo" id="cshpeo"  placeholder="请输入审核操作人"></td></tr>
+				    </tbody>
+				  </table>
+</div>
+			 <!--<div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">采购单号:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cid" id="cid"  placeholder="请输入采购单号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">采购疫苗明细:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cname" id="cname"  placeholder="请输入采购疫苗明细">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">采购数量:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="csl" id="csl"  placeholder="请输入采购数量">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">采购金额:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cmoney" id="cmoney"  placeholder="请输入采购金额">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">采购人:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cpeo" id="cpeo"  placeholder="请输入采购疫苗明细">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">采购人手机号:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="ctel" id="ctel"  placeholder="请输入采购人手机号">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">供应商:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cgys" id="cgys"  placeholder="请输入供应商">
+				  </div>
+			 </div>
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">仓库名称:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cck" id="cck"  placeholder="请输入仓库名称">
+				  </div>
+			 </div>
+				<div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">采购时间:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="ctime" id="ctime" 
+				       onclick="WdatePicker()" readonly value="1970-01-01" placeholder="请输入采购时间" >
+				  </div>
+				 </div>	
+			 <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">审核操作人:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="cshpeo" id="cshpeo"  placeholder="请输入审核操作人">
+				  </div>
+			 </div>-->
+			  <div class="form-group">
+				  <div class="col-sm-offset-6 col-sm-3" >
+				    <button type="button"  id="sb" onclick="_tj()"  class="btn btn-primary" style="width:78px">提交</button>
+				  </div>
+			  </div>
+		</div>
+  </div>
+       </form>
+  </body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+     
+   function _tj(){
+//            var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+//             bootstrapValidator.validate(); 
+//             if(bootstrapValidator.isValid()){ 
+                        $('#form1').submit(); 
+//             } 
+   }
+      function yin(){
+              $("#yinS").print(/*options*/);
+        
+   }
+   //接值  cid cname csl cmoney cpeo ctel cgys cck ctime cshpeo
+   $(document).ready(function(){
+        var emps=JSON.parse('<%-JSON.stringify(emps)%>');
+		    $("[name=cid]").val(emps[0].cid);
+			  $("[name=cname]").val(emps[0].cname);
+			  $("[name=csl]").val(emps[0].csl);
+			  $("[name=cmoney]").val(emps[0].cmoney);
+			  $("[name=cpeo]").val(emps[0].cpeo);
+			  $("[name=ctel]").val(emps[0].ctel);
+			  $("[name=cgys]").val(emps[0].cgys);
+			  $("[name=cck]").val(emps[0].cck);
+			  $("[name=ctime]").val(emps[0].ctime);
+			  $("[name=cshpeo]").val(emps[0].cshpeo);
+			  
+			  excel = new ExcelGen({
+			        "src_id": "yinS",
+			        "show_header": true
+			    });
+			    $("#generate-excel").click(function () {
+			        excel.generate();
+			    });
+	      //bootstrapValidator-begin
+//	   $('#form1').bootstrapValidator({
+//		        //live: 'disabled',
+//					message: 'This value is not valid',
+//					feedbackIcons: {
+//					    valid: 'glyphicon glyphicon-ok',
+//					    invalid: 'glyphicon glyphicon-remove',
+//					    validating: 'glyphicon glyphicon-refresh'
+//					},
+//					fields: {
+//						    cname: {
+//							validators: {
+//							    notEmpty: {
+//								message: '姓名为必填项'
+//							    }
+//							}
+//						    }
+//					}
+//	  	})
+//            //bootstrapValidator-end
+    }); 
+
+</SCRIPT>

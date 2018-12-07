@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="/javascripts/jquery.min.js"></script>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/styleZhang.css">
+    <script type="text/javascript" src="/javascripts/jszip.min.js"></script>
+    <script type="text/javascript" src="/javascripts/excel-gen.js"></script>
+    <script type="text/javascript" src="/javascripts/FileSaver.js"></script>
+    <script type="text/javascript" src="/javascripts/demo.page.js"></script>
+    <style type="text/css">
+    	th{
+    		color: #fff!important;
+    	}
+    </style>
+  </head>
+  <body>
+  <div class="panel panel-primary" style="margin:20px; border:1px solid #2882CE ">
+		<div class="panel-heading" style="height:60px;">
+			<img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站疫苗采购单</h3>
+			<button type="button"  id="generate-excel" class="btn btn-primary sb">导出到Excel文件</button>
+		</div>
+		<div class="panel-body">
+		    <form method="post" action="/stu/cgdels" id="form1">
+
+			<div class="panel panel-default">
+					<div class="panel-body" >
+						<div class="row">
+							  <div class="col-sm-10">
+								   <label style="margin-top: 7px;">请输入要查询的采购单号：</label><input type="text" name="cid" class="form-control" style="width: 200px; position: absolute; top: 0px; left: 200px;" /> 
+								   <label style="margin-left: 280px;margin-top: 7px;">
+								   请输入要查询的疫苗名称：</label><input type="text" name="cname" class="form-control" style="width: 200px; position: absolute; top: 0px; left: 700px;" />
+							     </div>
+							    <div class="col-sm-2">
+								  <input type="button" class="btn btn-success btn-sm cgbtn1" onclick="_query()" value="查询"/>
+								  <input type="button" value="删除" class="btn btn-success btn-sm cgbtn1" onclick="_del()"/>
+								  <a href="/stu/add" class="btn btn-success btn-sm cgbtn1" >添加</a>
+							    </div>
+					        </div>
+					 </div>
+			</div>
+		    	  <!--<div style="float: left;"><a href="/yimiao/add" style="margin:5px; text-decoration: none; color: black; position: absolute; top: 172px;"><i class="fa fa-level-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;添加疫苗信息</a></div>
+			      <div style="margin-left: 150px;  margin-top: 10px;"><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<a href="javascript:_del();" style="text-decoration: none; color: black; ">删除疫苗信息</a>
+			      </div>-->
+			       <table class="table table-bordered table-hover table-striped" id="yinS" style="margin-top: 20px; border: 2px solid #2882CE">
+				     
+				       <thead>
+				       <tr style="  background-color:#2882CE ">
+					       <th style="color:#6ec673; " ><input type="checkbox"></th>
+					       <th style="color:#6ec673">采购单号</th>
+					       <th style="color:#6ec673">采购商品明细</th>
+					       <th style="color:#6ec673">采购数量</th>
+					       <th style="color:#6ec673">采购金额</th>
+					       <th style="color:#6ec673">采购人（工号）</th>
+					       <th style="color:#6ec673">采购人手机号</th>
+					       <th style="color:#6ec673">供应商</th>
+					       <th style="color:#6ec673">仓库名称</th>
+					       <th style="color:#6ec673">采购时间</th>
+					       <th style="color:#6ec673">审核操作人</th>
+					       <th style="color:#6ec673">操作</th>
+				       </tr>
+				       </thead>
+				       <tbody id="tb1">
+					
+				       </tbody>
+			       </table>
+			<%if(count>0){%>
+					<%
+					   var a=Math.floor((pageNo-1)/5)*5+1;
+					   var c=Math.floor((zongye-1)/5)*5+1;
+					   var b=5;
+					   //判断是否最后一页
+					   if(a==c){
+               b=zongye-a+1;
+					   }
+					%>
+			  <ul class="pager" style="float:right; margin-top:0px;">
+				   <li>共<%=count%>条 <%=pageNo%>/<%=zongye%> </li>
+				    <li><a href="javascript:_go(1)" style="color: #6ec673">首页</a></li>
+				    <%if(pageNo!=1){%>
+				    <li><a href="javascript:_go(<%=pageNo-1%>)" style="color: #6ec673">上页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">上页</a></li>
+					 <%}%>
+					 <%if(pageNo!=zongye){%>
+					   <li><a href="javascript:_go(<%=pageNo-(-1)%>)" style="color: #6ec673">下页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">下页</a></li>
+					 <%}%>
+				    <li><a href="javascript:_go(<%=zongye%>)" style="color: #6ec673">尾页</a></li>
+				</ul>
+
+
+				<script>
+               function _go(pn){
+                   $("#form1").append("<input type=hidden name=pageNo value="+pn+"  >");
+                   $("#form1").attr("action","/stu");
+				       $("#form1").submit();
+				   }
+			      </script>
+			<%}%>
+			     
+
+			    
+			     
+		   </form>     
+		  
+		</div>
+  </div>
+      
+  
+  </body>
+</html>
+
+<script>
+    
+    function _del(){
+         
+         if($("[name=ids]:checked").length==0){
+           alert("至少选中一个");     
+	 }
+	 else{
+             if(confirm("确定删除吗?")){
+		    // 提交表单
+		   $("#form1").submit();
+	     } 
+	 }
+    }
+    $("#generate-excel").click(function () {
+								        excel.generate();
+			    });
+
+
+    $(document).ready(function(){
+          
+	  var datas=JSON.parse('<%-JSON.stringify(rows1)%>');
+
+	  for(var i=0;i<datas.length;i++){
+             var tr="<tr>"  +
+	            "<td><input type=checkbox name=ids value="+datas[i].cid+"  /></td>"+
+	      "<td>"+datas[i].cid+"</td>"+
+		    "<td>"+datas[i].cname+"</td><td>"+datas[i].csl+"</td> <td>"+datas[i].cmoney+"</td>" +
+		    "<td>"+datas[i].cpeo+"</td>"+
+		    "<td>"+datas[i].ctel+"</td>"+
+		    "<td>"+datas[i].cgys+"</td>"+
+		    "<td>"+datas[i].cck+"</td>"+
+		    "<td>"+datas[i].ctime+"</td>"+
+		    "<td>"+datas[i].cshpeo+"</td>"+
+		    "<td> <a href=\"/stu/cgqueryone?a="+datas[i].cid+"\";>打印采购单</a>&nbsp;&nbsp;"+
+		    "<a href=\"javascript:_test('"+datas[i].cid+"','"+datas[i].cname+"')\">测试</a></td> </tr>";
+
+	          
+	            $("#tb1").append(tr);
+	  }  
+	  excel = new ExcelGen({
+			        "src_id": "yinS",
+			        "show_header": true
+			    });
+    }); 
+
+
+    function  _test(eid,ename){
+       alert(eid+"----"+ename);
+
+    }
+
+
+    function _query(){
+            
+       $("#form1").attr("action","/stu");
+	     $("#form1").submit();
+				
+
+       }
+</script>
+

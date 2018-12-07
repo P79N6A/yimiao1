@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/yidong/js/jQuery.print.js"></script>
+    
+    <style type="text/css">
+    	input{
+    		border: none!important;
+    	}
+    	input:focus{ outline: none!important;}
+    </style>
+  </head>
+  <body>
+	  <div class="panel panel-primary" style="margin:20px; border:1px solid #6ec673 ">
+			<div class="panel-heading" style="height:60px;">
+	      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">接种者信息登记表</h3>
+						<button type="button"  id="sb" onclick="_tj()"  class="btn btn-primary">提交</button>
+	    	<button type="button"  id="dayin" onclick="yin()"  class="btn btn-primary">打印登记表</button>            
+			</div>
+			<div class="panel-body" id="yinS">
+			    <form method="post" action="/emp/dengjiupdate" id="form1" class="form-horizontal">
+			    	<input type="hidden" name="did" > 
+						<table  class="table table-bordereds suppliermodal2 table800 marginL20" style="margin-left: 135px;">
+	            <thead>
+	            	<tr>
+	                    <th class="" style="border: none;" colspan="4">
+	                    	<div class="tableColOne"><img src="/yidong/images/logoM.png"/></div>
+	                    	<div class="tableTitel">木兰县防疫站接种者登记表</div>
+	                    	<div id="" class="tableDate"><span>9</span>月<span>12</span>日</div>
+	                    </th>
+	                </tr>
+	            	<tr>
+	                    <th class="" colspan="5">
+	                    	<div class="">接种点名称：<span>木兰县防疫站<span></div>
+	                    </th>
+	                    
+	                </tr>
+	                
+	            </thead>
+	            <tbody>
+	            		<tr>
+	                    <td class="" colspan="2">
+	                    	<div>接种者编号：<input name='dtimes'></input></div>
+	                    </td>
+	                    <td class=""> 
+	                    	<div class="form-group" style="height: 10px;">
+	                    		<span class="jzName">接种者姓名:</span>
+	                    		<input style="border: none;" name='dname'></input></div>
+	                    </td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">接种者性别：<input name='dsex'></input></td>
+	                    <td class="tableFooter">接种者年龄：<input name='dage'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">出生日期：<input name='dbirth'></input></td>
+	                    <td class="tableFooter">挂号门诊：<input name='droom'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">主治医师：<input name='ddoctor'></input></td>
+	                    <td class="tableFooter">过敏史：<input name='dgms'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">联系电话：<input name='dtel'></input></td>
+	                    <td class="tableFooter">是否有医疗卡：<input name='dylk'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">医疗卡号：<input name='dylkNum'></input></td>
+	                    <td class="tableFooter">下次接种预约时间：<input name='dnext'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="5" class="tableFooter">所需接种疫苗：<input name='dymiao'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="2" class="tableFooter">录入时间：<input name='dlrtime'></input></td>
+	                    <td class="tableFooter">创建人：<input name='dpeo'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+	                    <td colspan="5" class="tableFooter">注射记录：<input name='dbiaoji'></input></td>
+	                </tr>
+	                <tr class="firsttr">
+                    <td colspan="5" class="tableFooter">个人费用：<input name='djmoney'></input></td>
+                </tr>
+	                <tr class="firsttr" style="border-bottom: none;">
+	                    <td colspan="3"  class="tableFooter">任何问题请咨询前台：<span>17310333205</span></td>
+	                </tr>
+	                <!--<tr class="firsttr">
+	                	<td colspan="2" class="tableFooter"></td>
+	                  <td colspan="3" style="border: none; font-size: 20px; float: right;" class="tableFooter"></td>
+	                </tr>-->
+	                <tr class="firsttr">
+	                	<td colspan="5" class="tableFooter">
+	                		
+	                	</td>
+	                </tr>
+	            </tbody>
+			</table>
+			   	</form> 
+			</div>
+	  </div>
+  </body>
+</html>
+
+<script>
+	function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator');
+               bootstrapValidator.validate(); 
+               if(bootstrapValidator.isValid()){
+                        $('#form1')[0].submit();
+               } 
+   }
+	function yin(){
+             $("#yinS").print(/*options*/);
+   }
+
+    $(document).ready(function(){
+			var emps=JSON.parse('<%-JSON.stringify(emps)%>');
+
+		    $("[name=did]").val(emps[0].did);
+			  $("[name=dname]").val(emps[0].dname);
+			  $("[name=dsex]").val(emps[0].dsex);
+			  $("[name=dage]").val(emps[0].dage);
+			  $("[name=dbirth]").val(emps[0].dbirth);
+			  $("[name=droom]").val(emps[0].droom);
+			  $("[name=ddoctor]").val(emps[0].ddoctor);
+			  $("[name=dgms]").val(emps[0].dgms);
+			  $("[name=dtel]").val(emps[0].dtel);
+			  $("[name=dylk]").val(emps[0].dylk);
+			  $("[name=dylkNum]").val(emps[0].dylkNum);
+			  $("[name=dnext]").val(emps[0].dnext);
+			  $("[name=dymiao]").val(emps[0].dymiao);
+			  $("[name=dlrtime]").val(emps[0].dlrtime);
+			  $("[name=dpeo]").val(emps[0].dpeo);
+			  $("[name=dbiaoji]").val(emps[0].dbiaoji);
+			  $("[name=dtimes]").val(emps[0].dtimes);
+			  $("[name=djmoney]").val(emps[0].djmoney);
+//    $(":radio[value="+emps[0].sex+"]").prop("checked",true);
+			
+			
+          //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({ 
+           
+            message: '该内容不合法', 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            fields: { 
+                         dname: { 
+                               validators: { 
+                                    notEmpty: { 
+                                          message: '不能为空' 
+                                    } 
+                               } 
+                         },  
+                } 
+          }); 
+	  
+
+    }); 
+
+
+    
+</script>
+

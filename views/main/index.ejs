@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>木兰县防疫站疫苗接种管理系统</title>
+	<link rel="stylesheet" type="text/css" href="/jquery-easyui-1.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/jquery-easyui-1.4/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/jquery-easyui-1.4/demo.css">
+	<!--<script type="text/javascript" src="/jquery-easyui-1.4/jquery.min.js"></script>-->
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/jquery-easyui-1.4/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" href="/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="/ztree/js/jquery.ztree.core-3.5.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px;    font-size: 20px;
+">木兰县防疫站疫苗接种管理系统权限管理</div>
+	<div data-options="region:'west',split:true,title:'系统导航栏'" style="width:220px;padding:10px;">
+	     <ul id="treeDemo" class="ztree"></ul>
+	</div>
+	<div data-options="region:'east',split:true,collapsed:true,title:''" style="width:100px;padding:10px;"></div>
+	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;"></div>
+	<div data-options="region:'center',title:''">
+	   <iframe src="" style="width:100%;height:100%"  name="center" FRAMEBORDER=0 SCROLLING=AUTO ></iframe>
+	</div>
+</body>
+</html>
+
+<SCRIPT type="text/javascript">
+		//<!--
+		var setting = {
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+		$(document).ready(function(){
+		      $.ajax({ 
+					type: "get", 
+					url: "/main/left", 
+					data: "", 
+					success: function(data){ 
+						var zNodes=[];
+			                        for(var i=0;i<data.length;i++){
+						        if(data[i].isParent=="true"){
+							  
+							   zNodes.push({"id":data[i].id,"pId":data[i].pid,"name":data[i].name, open:true}); 
+							}else{
+				               zNodes.push({"id":data[i].id,"pId":data[i].pid,"name":data[i].name, open:true,"url":data[i].url,"target":"center"}); 
+							}
+						}
+						alert(JSON.stringify(zNodes));
+						$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					} 
+		     }); 
+		});
+		//-->
+	</SCRIPT>

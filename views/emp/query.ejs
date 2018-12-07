@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="/javascripts/jquery.min.js"></script>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <script type="text/javascript" src="/javascripts/jszip.min.js"></script>
+    <script type="text/javascript" src="/javascripts/excel-gen.js"></script>
+    <script type="text/javascript" src="/javascripts/FileSaver.js"></script>
+    <script type="text/javascript" src="/javascripts/demo.page.js"></script>
+    <style type="text/css">
+    	th{
+    		color: #fff;
+    	}
+    </style>
+  </head>
+  <body>
+  <div class="panel panel-primary" style="margin:20px; border:1px solid #2882CE ">
+		<div class="panel-heading" style="height:60px;">
+      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站疫苗接种接种人信息详情</h3>
+    	<button type="button"  id="generate-excel" class="btn btn-primary sb">导出到Excel文件</button>
+		</div>
+		<div class="panel-body">
+		    <form method="post" action="/emp/dels" id="form1">
+
+			<div class="panel panel-default">
+					<div class="panel-body" >
+						<div class="row">
+							  <div class="col-sm-10">
+								   <label>用户名：</label><input type="text" name="ename" class="form-control" style="width: 200px; position: absolute; top: 0px; left: 100px;" /> 
+								   <label style="margin-left: 280px; line-height: 34px;">
+								   身份证号：</label><input type="text" name="shenfen" class="form-control" style="width: 200px; position: absolute; top: 0px; left: 450px;" />
+								   
+							     </div>
+							    <div class="col-sm-2">
+								  <input type="button" class="btn btn-success btn-sm" onclick="_query()" value="查询"/>
+								  <input type="button" value="删除" class="btn btn-success btn-sm" onclick="_del()"/>
+								  <a href="add.html" class="btn btn-success btn-sm" >添加</a>
+							    </div>
+					        </div>
+					 </div>
+			
+			</div>
+
+
+
+
+
+
+		    	  <div style="float: left;"><a href="/emp/add" style="margin:5px; text-decoration: none; color: black; position: absolute; top: 180px;"><i class="fa fa-level-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;添加患者信息</a></div>
+			      <div style="margin-left: 150px;  margin-top: 10px;"><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<a href="javascript:_del();" style="text-decoration: none; color: black; ">删除患者信息</a></div>
+			       <table class="table table-bordered table-hover table-striped" id="yinS" style="margin-top: 20px; border: 2px solid #2882CE;">
+				       <thead>
+				       <tr style="  background-color:#2882CE ">
+					       <th><input type="checkbox"></th>
+					       <th>序号</th>
+					       <th>名字</th>
+					       <th>性别</th>
+					       <th>年龄</th>
+					       <th>出生</th>
+					       <th>电话</th>
+					       <th>身份证号</th>
+					       <th>操作</th>
+				       </tr>
+				       </thead>
+				       <tbody id="tb1">
+					
+				       </tbody>
+			       </table>
+			<%if(count>0){%>
+					<%
+					   var a=Math.floor((pageNo-1)/5)*5+1;
+					   var c=Math.floor((zongye-1)/5)*5+1;
+					   var b=5;
+					   //判断是否最后一页
+					   if(a==c){
+	                                       b=zongye-a+1;
+					   }
+					%>
+			       <ul class="pager" style="float:right; margin-top:0px;">
+				   <li>共<%=count%>条 <%=pageNo%>/<%=zongye%> </li>
+				    <li><a href="javascript:_go(1)" style="color: #6ec673">首页</a></li>
+				    <%if(pageNo!=1){%>
+				    <li><a href="javascript:_go(<%=pageNo-1%>)" style="color: #6ec673">上页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">上页</a></li>
+					 <%}%>
+					 <%if(pageNo!=zongye){%>
+					   <li><a href="javascript:_go(<%=pageNo-(-1)%>)" style="color: #6ec673">下页</a></li>
+					 <%}else{%>
+					    <li><a href="javascript:;" style="color: #6ec673">下页</a></li>
+					 <%}%>
+				    <li><a href="javascript:_go(<%=zongye%>)" style="color: #6ec673">尾页</a></li>
+				</ul>
+
+
+				<script>
+           function _go(pn){
+               $("#form1").append("<input type=hidden name=pageNo value="+pn+"  >");
+               $("#form1").attr("action","/emp");
+				       $("#form1").submit();
+				   }
+			      </script>
+			<%}%>
+			     
+
+			    
+			     
+		   </form>     
+		  
+		</div>
+  </div>
+      
+  
+  </body>
+</html>
+
+<script>
+    
+    function _del(){
+         
+         if($("[name=ids]:checked").length==0){
+           alert("至少选中一个");     
+	 }
+	 else{
+             if(confirm("确定删除吗?")){
+		    // 提交表单
+		   $("#form1").submit();
+	     } 
+	 }
+    }
+    $("#generate-excel").click(function () {
+			        excel.generate();
+			    });
+
+
+    $(document).ready(function(){
+          
+	  var datas=JSON.parse('<%-JSON.stringify(rows1)%>');
+
+	  for(var i=0;i<datas.length;i++){
+             var tr="<tr>"  +
+	            "<td><input type=checkbox name=ids value="+datas[i].eid+"  /></td>"+
+		    "<td>"+(i+1)+"</td><td>"+datas[i].ename+"</td> <td>"+datas[i].sex+"</td>" +
+		    "<td>"+datas[i].age+"</td>"+
+		    "<td>"+datas[i].birth+"</td>"+
+		    "<td>"+datas[i].tel+"</td>"+
+		    "<td>"+datas[i].shenfen+"</td>"+
+		    "<td> <a href=\"/emp/queryone?a="+datas[i].eid+"\";>修改</a>&nbsp;&nbsp;"+
+		    "<a href=\"javascript:_test('"+datas[i].eid+"','"+datas[i].ename+"')\">测试</a></td> </tr>";
+
+	          
+	            $("#tb1").append(tr);
+	  }  
+	  excel = new ExcelGen({
+			        "src_id": "yinS",
+			        "show_header": true
+			    });
+
+    }); 
+
+
+    function  _test(eid,ename){
+       alert(eid+"----"+ename);
+
+    }
+
+
+    function _query(){
+            
+       $("#form1").attr("action","/emp");
+	     $("#form1").submit();
+				
+
+       }
+</script>
+

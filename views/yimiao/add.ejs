@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/javascripts/DatePicker/WdatePicker.js"></script>
+
+  </head>
+
+  <body>
+   <form method="post" action="/yimiao/save" id="form1" class="form-horizontal">
+   <div class="panel panel-primary" style="margin:20px; height:440px">
+		<div class="panel-heading" style="height:60px; background-image:url(/yidong/images/bg6.png)">
+                  <img style="float:left" src="/yidong/images/hd3.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站疫苗接种接种人信息录入</h3>
+                </div>
+		<div class="panel-body" >
+			<img src="/yidong/images/biaoban5.png" style="position: absolute;  top: 80px; left: 21px;">
+			 <div class="form-group">
+			    <label for="firstname" class="col-sm-2 control-label">疫苗名:</label>
+			  <div class="col-sm-5">
+			    <input type="text" class="form-control" name="a" id="firstname"  placeholder="请输入疫苗名字信息">
+			  </div>
+			 </div>
+
+
+			
+				<div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">生产日期:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="ssrq" id="birthday" 
+				       onclick="WdatePicker()" readonly value="1970-01-01" placeholder="请输入疫苗的生产日期" >
+				  </div>
+				 </div>	
+
+
+
+
+				<div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">保质期:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="bzqi" id="nianling"  placeholder="请输入疫苗的保质期">
+				  </div>
+				 </div>
+
+
+
+				 
+
+
+				 <div class="form-group">
+				  <label for="firstname" class="col-sm-2 control-label">疫苗产品批次:</label>
+				  <div class="col-sm-5">
+				     <input type="text" class="form-control" name="phone" id="phone"  placeholder="请输入疫苗的产品批次" >
+				  </div>
+			        </div>
+
+
+				<div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">疫苗类型:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="leixing" id="leixing"  placeholder="请输入疫苗的类型">
+				  </div>
+				 </div>
+
+
+
+				<div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">疫苗生产地:</label>
+				  <div class="col-sm-5">
+				    <input type="text" class="form-control" name="shengcd" id="shengcd"  placeholder="请输入疫苗的生产地">
+				  </div>
+				 </div>
+
+
+			 
+			 
+
+			  <div class="form-group">
+			         
+				  <div class="col-sm-offset-6 col-sm-3" >
+				    <button type="button"  id="sb" onclick="_tj()"  class="btn btn-primary" style="width:78px">提交</button>
+				  </div>
+			  </div>
+		  
+		</div>
+  </div>
+
+
+     
+
+    
+       </form>
+  </body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+     
+   function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+   
+   $(document).ready(function(){
+          
+	  
+          
+	      //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({
+		        //live: 'disabled',
+			message: 'This value is not valid',
+			feedbackIcons: {
+			    valid: 'glyphicon glyphicon-ok',
+			    invalid: 'glyphicon glyphicon-remove',
+			    validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				    a: {
+					validators: {
+					    notEmpty: {
+						message: '姓名为必填项'
+					    }
+					}
+				    }
+			}
+	      })
+              //bootstrapValidator-end
+	
+
+
+
+       
+	    
+
+    }); 
+
+</SCRIPT>

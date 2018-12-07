@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <link rel="stylesheet" type="text/css" href="/yidong/css/daterangepicker.min.css"/>
+    <script src="/yidong/js/moment.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+     <script type="text/javascript" src="/yidong/js/jquery.daterangepicker.min.js"></script>
+     <script type="text/javascript" src="/yidong/js/jQuery.print.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleZhang.css"/>
+    <style type="text/css">
+    	th{
+    		color: #fff!important;
+    	}
+    </style>
+  </head>
+  <body>
+	  <div class="panel panel-primary" style="margin:20px; border:1px solid #2882CE ">
+			<div class="panel-heading" style="height:60px;">
+	      
+	      <img style="float:left" src="/yidong/images/hd2.png"><h3 class="panel-title" style=" float:left; margin-left:20px; font-family:微软雅黑; font-size:18px; margin-top:10px;">木兰县防疫站售空疫苗登记</h3>
+	    	<button type="button"  id="dayin" onclick="yin()"  class="btn btn-primary">打印疫苗注意事项</button>
+			</div>
+			<div class="panel-body">
+			    <form method="post" action="/yimiao/sksave" id="form1">
+						<div class="panel panel-default">
+							<div class="panel-body" id="yinS" >
+								<div class="row">
+								 <!--<div id=""><button  class="fkBtn" onclick="_tj()">提交已售空疫苗</button></div>-->
+										 <div id="zysxTit">疫苗接种注意事项</div>
+										 <div class="col-sm-12">
+		                <div class="ibox float-e-margins">
+		                    <!--<div class="ibox-title">
+                                <h5>所有项目</h5>
+                                <div class="ibox-tools">
+                                    <a href="projects.html" class="btn btn-primary btn-xs">创建新项目</a>
+                                </div>
+                         	</div>-->
+		                    <div class="ibox-content minW1200" >
+		                        <div class="cent">
+					           		 <div id="" class="xq-container clearfix">
+					           		 	<div id="" class="xq-containerL">第一天</div>
+					           		 	<div id="" class="xq-containerR">
+					           		 		<div class="xq-conRTop">木兰县防疫站</div>
+					           		 		<div class="xq-conRBot">疫苗接种注意事项</div>
+					           		 	</div>
+					           		 </div>
+					           		 <div id="" class="bgxq-main">
+					           		 	<!--<div class="xq-xian"></div>-->
+					           		 	<div id="" class="xq-main">
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/i.png"/><span>One</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic1.png"/></div>
+					           		 			<div class="xq-MThree">宝宝在打完疫苗后，通常在1天之内最好不要洗澡，因为刚打完疫苗，针孔部位尚未完全长好，在洗澡后，细菌有可能会进入到针孔之中，导致局部出现感染。所以，宝宝在打完疫苗后，24小时内最好不要洗澡。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/ii.png"/><span>Two</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic2.png"/></div>
+					           		 			<div class="xq-MThree">在打完疫苗的当天晚上，宝宝也许会出现哭闹的现象，这种情况通常属于正常现象，可以给宝宝多喝点水，对宝宝进行适当的安抚，通常在第二天的时候，宝宝会慢慢恢复正常。有些注射过免疫球蛋白的宝宝，最好在6个月以内不要进行疫苗接种。对于6个月到3岁左右的宝宝，对于体质较弱，容易患感冒的，如果家庭条件允许，最好给宝宝注射流感疫苗。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/III.png"/><span>Three</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic3.png"/></div>
+					           		 			<div class="xq-MThree">在给宝宝打预防针的时候，最好避免空腹给宝宝接种疫苗。因为空腹接种有可能会导致低血糖的出现，特别是在宝宝口服脊髓灰质炎疫苗之后，还要间隔半个小时的时间不能喝水，吃东西。所以，最好不要让宝宝空腹打疫苗。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/IV.png"/><span>Four</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic8.png"/></div>
+					           		 			<div class="xq-MThree">当宝宝患有感冒，轻微发热的时候，最好稍微延缓一些时间给宝宝接种疫苗。因为在宝宝感冒，发热的时候，如果接种疫苗，会导致宝宝的病情出现加重的现象。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/V.png"/><span>Five</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic5.png"/></div>
+					           		 			<div class="xq-MThree">患有哮喘，以及过敏性疾病的宝宝最好不要接种疫苗，因为过敏性体质的宝宝在接种疫苗后，有可能会出现过敏反应，轻者会出现皮疹，风团，严重者，还有可能会出现过敏性休克的症状，如果抢救不及时，有可能会危及生命。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/VI.png"/><span>Six</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic6.png"/></div>
+					           		 			<div class="xq-MThree">如果宝宝缺钙严重，患有严重的佝偻病，营养不良和免疫功能低下的疾病，最好也不要给宝宝接种疫苗。有些早产儿，在出生后，最好在医生的指导下进行疫苗接种。如果宝宝患有化脓性皮肤病，湿疹等疾病，最好不要给宝宝接种疫苗，因为在接种疫苗后，会出现病情加重的现象。可以等皮肤疾患完全恢复后，在进行补种。</div>
+					           		 		</div>
+					           		 		<div id="" class="xq-mainOne clearfix">
+					           		 			<div class="xq-MOne"><img src="/yidong/images/VII.png"/><span>Seven</span><div class="floatR"><button class="fa fa-plus-circle xq-delbtn marginR-6"  data-toggle="modal" data-target="#customTextad"></button><button class="fa fa-pencil-square-o xq-Bianbtn" data-toggle="modal" data-target="#customText"></button><button class="fa fa-trash xq-delbtn" data-toggle="modal" data-target="#customText2" ></button></div></div>
+					           		 			<div id="" class="xq-Pic"><img src="/yidong/images/pic7.png"/></div>
+					           		 			<div class="xq-MThree">另外，对患有脑膜炎后遗症，癫痫的宝宝，最好不要进行疫苗接种。对于伴有心脏，肝脏，肾脏功能不全的宝宝最好不要进行疫苗接种。如果宝宝发热较高，体温在37.5摄氏度以上，或是患有活动性结核，淋巴结肿大的宝宝最好不要进行疫苗接种。</div>
+					           		 		</div>
+					           		 	</div>
+					           		 </div>
+			                    </div>
+		                	</div>
+		            	</div>
+		        	</div>
+							 	</div>
+							</div>
+						</div>
+			   </form>   
+			</div>
+	  </div>
+  </body>
+</html>
+
+<script>
+	function yin(){
+              $("#yinS").print(/*options*/);
+        
+   }
+	$('.dataTime').dateRangePicker({
+				autoClose: true,
+				singleDate : true,
+				showShortcuts: false,
+				singleMonth: true
+			
+		 });
+    	function _tj(){
+              var bootstrapValidator = $('#form1').data('bootstrapValidator'); 
+               //手动触发验证 
+               bootstrapValidator.validate(); 
+               //判断是否都合法 
+               if(bootstrapValidator.isValid()){ 
+
+
+                        //提交表单 注意 不能用 jquery对象 必须用dom对象 
+                        $('#form1')[0].submit(); 
+
+               } 
+        
+   }
+    	
+//	function yin(){
+//		$("#form1").submit();
+//	}
+	
+    
+//  function _del(){
+//       
+//       if($("[name=ids]:checked").length==0){
+//         alert("至少选中一个");     
+//	 }
+//	 else{
+//           if(confirm("确定删除吗?")){
+//		    // 提交表单
+//		   $("#form1").submit();
+//	     } 
+//	 }
+//  }
+
+
+    $(document).ready(function(){
+//  	alert(1)
+          //bootstrapValidator-begin
+	   $('#form1').bootstrapValidator({ 
+           
+            message: '该内容不合法', 
+            feedbackIcons: { 
+                   valid: 'glyphicon glyphicon-ok', 
+                   invalid: 'glyphicon glyphicon-remove', 
+                   validating: 'glyphicon glyphicon-refresh' 
+            }, 
+            fields: { 
+                         skname: { 
+                               validators: { 
+                                    notEmpty: { 
+                                          message: '不能为空' 
+                                    } 
+                               } 
+                         },  
+                } 
+          }); 
+	  
+
+    }); 
+</script>
+

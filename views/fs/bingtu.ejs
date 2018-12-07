@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+		<link rel="stylesheet" href="/stylesheets/styleZhang.css">
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script src="/FusionCharts/FusionCharts.js"></script>
+		
+  </head>
+  <body>
+		<div class='picBig'> 
+			<div id="chart1div" > 
+						
+			</div> 
+			<div id="chart3div" > 
+						
+			</div>
+			<div id="chart5div" > 
+						
+			</div>
+			<div id="chart6div" > 
+						
+			</div>
+			<div id="chartmoneydiv" > 
+						
+			</div>
+			<div id="chart2div" style="position:absolute;left:20px;top:10px" > 
+					 
+			</div> 
+			<!-- <button onclick='_huan()'></button> -->
+		</div> 
+  </body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+	$(document).ready(function(){
+		$.ajax({ 
+			 type: "get", 
+			 url: "/fs/bingtu", 
+			 data: "", 
+			 success: function(data){ 
+			    var chart1 = new FusionCharts("/FusionCharts/Pie3D.swf", "chart1Id12321", "600", "400", "0", "1");         
+			     
+			    chart1.setDataXML(data); 
+			    chart1.render("chart1div"); 
+
+			    var chart2 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");         
+			     
+			    chart2.setDataXML(data); 
+			    chart2.render("chart2div"); 
+			 } 
+		});
+		$.ajax({ 
+					 type: "get", 
+					 url: "/fs/bingtu2", 
+					 data: "", 
+					 success: function(data){ 
+					    var chart3 = new FusionCharts("/FusionCharts/Column3D.swf", "chart1Id12321", "600", "400", "0", "1");         
+					     
+					    chart3.setDataXML(data); 
+					    chart3.render("chart3div"); 
+//					    chart3.setDataXML("<chart caption='采购单00022' subcaption='2000-10-10' >"
+//			                  +" <set label='钉子' value='10' />"
+//											  +" <set label='螺丝' value='11' />"
+//											  +" <set label='水泥' value='13' />"
+//											  +"  </chart>");
+//							chart3.render("chart3div");
+		
+					    var chart4 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");         
+					     
+					    chart4.setDataXML(data); 
+					    chart4.render("chart4div"); 
+					 } 
+				});
+				$.ajax({ 
+					 type: "get", 
+					 url: "/fs/bingtu5", 
+					 data: "", 
+					 success: function(data){ 
+					    var chart5 = new FusionCharts("/FusionCharts/Column3D.swf", "chart1Id12321", "600", "400", "0", "1");         
+					     
+					    chart5.setDataXML(data); 
+					    chart5.render("chart5div"); 
+					    
+//					    var chart6 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");    
+//					    chart6.setDataXML(data); 
+//					    chart6.render("chart6div"); 
+					 } 
+				});
+				$.ajax({ 
+					 type: "get", 
+					 url: "/fs/bingtu6", 
+					 data: "", 
+					 success: function(data){ 
+					    var chart6 = new FusionCharts("/FusionCharts/Pie3D.swf", "chart1Id12321", "600", "400", "0", "1");         
+					     
+					    chart6.setDataXML(data); 
+					    chart6.render("chart6div"); 
+					    
+//					    var chart6 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");    
+//					    chart6.setDataXML(data); 
+//					    chart6.render("chart6div"); 
+					 } 
+				});
+				$.ajax({ 
+					 type: "get", 
+					 url: "/fs/bingtumoney", 
+					 data: "", 
+					 success: function(data){ 
+					    var chartmoney = new FusionCharts("/FusionCharts/Column3D.swf", "chart1Id12321", "600", "400", "0", "1");
+					    chartmoney.setDataXML(data); 
+					    chartmoney.render("chartmoneydiv"); 
+					    
+//					    var chart6 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");    
+//					    chart6.setDataXML(data); 
+//					    chart6.render("chart6div"); 
+					 } 
+				});
+	});
+	function _huan(){
+		$.ajax({ 
+			 type: "get", 
+			 url: "/fs/zhutu", 
+			 data: "", 
+			 success: function(data){ 
+			    var chart1 = new FusionCharts("/FusionCharts/Column3D.swf", "chart1Id12321", "600", "400", "0", "1");         
+			     
+			    chart1.setDataXML(data); 
+			    chart1.render("chart1div"); 
+
+			    var chart2 = new FusionCharts("/FusionCharts/SSGrid.swf", "chart1Id12321", "100", "50", "0", "1");         
+			     
+			    chart2.setDataXML(data); 
+			    chart2.render("chart2div"); 
+
+
+			 } 
+		});
+	
+	
+	}
+     
+   
+
+    
+
+</SCRIPT>

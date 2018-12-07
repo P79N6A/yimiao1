@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    
+	<link rel="stylesheet" href="/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+	<script type="text/javascript" src="/ztree/js/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+  </head>
+  <body>
+  <div class="panel panel-primary" style="margin:20px">
+		<div class="panel-heading">
+      <h3 class="panel-title">用户授权信息</h3>
+    </div>
+		<div class="panel-body">
+		    <form method="post" action="/emp/dels" id="form1">
+			       <!--<button type="button" class="btn btn-success" style="margin:5px" onclick="_add()" >添加</button>-->
+			       <table class="table table-bordered table-hover table-striped">
+				       <thead>
+				       <tr>
+					       <th>序号</th>
+					       <th>用户名</th>
+					       <th>密码</th>
+					       <th>昵称</th>
+					       <th>操作</th>
+				       </tr>
+				       </thead>
+				       <tbody id="tb1">
+					   <%for(var i=0;i<datas.length;i++){%>
+                                              <tr>
+					       <td><%=i+1%></td>
+					       <td><%=datas[i].username%></td>
+					       <td><%=datas[i].password%></td>
+					       <td><%=datas[i].nicheng%></td>
+                                               <td><a href="javascript:_showQuan('<%=datas[i].userid%>')">授权</a></td>
+				              </tr>
+					   <%}%>
+				       </tbody>
+			       </table>   
+		    </form>     
+		  
+		</div>
+  </div>
+
+
+<div class="modal fade" id="a" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="modal-content" >
+             <div class="modal-header">
+                <button type="button" class="close"   data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">用户授权</h4> 
+             </div>  
+	     <div class="modal-body" >
+	            <ul id="treeDemo" class="ztree"></ul> 
+		    <form action="/main/saveUt" method="post" id="ff">
+             <input type="hidden" name="userid" id="userid" />
+        </form>
+	     </div>
+	     <div class="modal-footer">
+				<button type="button" class="btn btn-default"   data-dismiss="modal">关闭  </button>
+				<button type="button" class="btn btn-primary" onclick="_tj()">  提交更改  </button>
+	     </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+  
+  </body>
+</html>
+
+<script>
+      
+      	var setting = {
+			check: {
+				enable: true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+       
+      function _showQuan(userid){
+           
+	  
+
+	      $.ajax({ 
+				type: "get", 
+				url: "/main/queryTree", 
+				data: {"userid":userid}, 
+				success: function(data){ 
+				        //  用户id 给上  
+					$("#userid").val(userid);
+          $('#a').modal('show');
+
+					var zNodes=[];
+					for(var i=0;i<data.length;i++){
+					        
+						if(data[i].id==data[i].fktid){
+						  
+						   zNodes.push({"id":data[i].id,"pId":data[i].pid,"name":data[i].name, open:true,checked:true}); 
+						}else{
+						   zNodes.push({"id":data[i].id,"pId":data[i].pid,"name":data[i].name, open:true}); 
+						}
+		       
+					}
+					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+				} 
+	     }); 
+      }
+      function _tj(){
+                var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+                var nodes = treeObj.getCheckedNodes(true);
+		for(var i=0;i<nodes.length;i++){
+                   $("#ff").append("<input type=hidden  name=ids value="+nodes[i].id+">");
+		}
+		//提交表单
+		$("#ff").attr("action","/main/saveUt");
+		$("#ff").submit();
+      }
+
+
+    
+</script>
+
